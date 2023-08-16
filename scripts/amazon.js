@@ -63,13 +63,17 @@ document.querySelectorAll('.js-add-to-card').forEach((button) => {
     cart.forEach(item => {
       if (productId === item.productId) {
         matchingItem = item;
-      } else {
-        cart.push({
-          productId: productId,
-          quantity: 1
-        })
       }
     });
+
+    if (matchingItem) {
+      matchingItem.quantity += 1;
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1
+      });
+    }
 
     console.log(cart);
   });
